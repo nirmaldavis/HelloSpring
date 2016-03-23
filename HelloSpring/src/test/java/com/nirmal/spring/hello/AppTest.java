@@ -10,7 +10,18 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
-    /**
+	
+
+	App app = null;
+	
+    @Override
+	protected void setUp() throws Exception {
+
+		super.setUp();
+		app = new App();
+	}
+
+	/**
      * Create the test case
      *
      * @param testName name of the test case
@@ -34,5 +45,13 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
+    }
+    
+    public void testSayHelloWithSpring() {
+    	
+    	String text = "Spring World..!!";
+		String helloWithSpringActual = app.sayHelloWithSpring(text );
+		assertEquals("Hello, "+text, helloWithSpringActual);
+		
     }
 }
