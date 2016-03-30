@@ -24,6 +24,8 @@ public class App
 		//Get Bean from Spring context
 		Hello hello = context.getBean(Hello.class);
 		
+		context.close();
+		
 		return  hello.sayHello(text);
     }
 }

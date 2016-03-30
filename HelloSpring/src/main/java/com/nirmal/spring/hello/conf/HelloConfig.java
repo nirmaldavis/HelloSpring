@@ -11,6 +11,11 @@ public class HelloConfig {
 
 	@Bean
 	Hello getHello() {
-		return new HelloImpl();
+		return new HelloImpl("Hello 1");
+	}
+
+	@Bean
+	Hello getHello2() {
+		return new HelloImpl("Hello 2");
 	}
 }
