@@ -24,10 +24,10 @@ public class ApplicationConfig {
 	
 	
 
-	@Bean(name="message")
-	String getWelcomeMessage() {
-		return "Welcome, " + name;
-	}
+//	@Bean(name="message")
+//	String getWelcomeMessage() {
+//		return "Welcome, " + name;
+//	}
 	
 	//Expose bean with Qualifier describing the bean id
 	@Bean(name="message")
@@ -40,10 +40,21 @@ public class ApplicationConfig {
 	String example() {
 		return "Example 2";
 	}
+	
+	@Bean
+	String userName() {
+		return "Nirmal";
+	}
+	
+	@Bean
+	String welcome(@Qualifier("userName") String userName)
+	{
+		return "Welcome , " + userName;
+	}
 }
 
 
 // Referring bean by autowire for the field - done
 // Referring bean in bean method parameter - done
-//TODO: Question - How to refer bean in method parameter with Qualifier, is it possible ?
+//DONE: Question - How to refer bean in method parameter with Qualifier, is it possible ? -- Try @Qualifier along with parameter
 //TODO: Testing multiple beans with same name - may get latest

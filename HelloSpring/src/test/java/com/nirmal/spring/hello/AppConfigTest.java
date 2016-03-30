@@ -53,6 +53,21 @@ public class AppConfigTest {
 		System.out.println(bean);
 		assertEquals("Example 2", bean);
 	}
+	
+	@Test
+	public void testUserName()
+	{
+		String name = context.getBean("userName", String.class);
+		assertEquals("Nirmal", name);
+		
+	}
+	
+	@Test
+	public void testWelcome() {
+		String welcome = context.getBean("welcome", String.class);
+		assertEquals("Welcome , Nirmal", welcome);
+		
+	}
 }
 
 //DONE:  I want to test AutoWired
