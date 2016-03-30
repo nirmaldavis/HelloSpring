@@ -45,5 +45,5 @@ public class ApplicationConfig {
 
 // Referring bean by autowire for the field - done
 // Referring bean in bean method parameter - done
-//TODO: How to refer bean in method parameter with Qualifier, is it possible ?
+//TODO: Question - How to refer bean in method parameter with Qualifier, is it possible ?
 //TODO: Testing multiple beans with same name - may get latest
