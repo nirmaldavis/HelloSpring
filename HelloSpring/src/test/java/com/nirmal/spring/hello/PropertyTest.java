@@ -39,4 +39,12 @@ public class PropertyTest {
 		assertEquals("Nirmal", user);
 		
 	}
+	
+	@Test
+	public void testPropertyFromPropertiesFile() {
+		//System.setProperty("mode", "dev"); Pass it as command line property -Dmode=dev
+		String user = context.getBean("userName", String.class);
+		assertEquals("Nirmal Davis V", user);
+		
+	}
 }
