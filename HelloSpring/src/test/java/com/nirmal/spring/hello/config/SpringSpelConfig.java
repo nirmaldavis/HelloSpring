@@ -3,7 +3,6 @@ package com.nirmal.spring.hello.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 public class SpringSpelConfig {
@@ -16,8 +15,4 @@ public class SpringSpelConfig {
 		return accountType;
 	}
 	
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}	
 }
