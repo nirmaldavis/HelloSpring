@@ -1,13 +1,11 @@
 package com.nirmal.spring.hello;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.nirmal.spring.hello.config.PropertyConfig;
 
@@ -20,6 +18,10 @@ public class PropertyTest {
 		
 //		context = new AnnotationConfigApplicationContext(PropertyConfig.class);
 		
+		//We can set it on comand line system property arguments -DUSER_ID=Nirmal -Dmode=dev
+		//or set as system property in program before initialzing the spring context
+		System.setProperty("USER_ID", "Nirmal");
+		System.setProperty("mode", "dev");
 		context = SpringApplication.run(PropertyConfig.class);
 //		System.setProperty("USER_ID", "Nirmal");
 		System.out.println("Property : USER_ID = " + 
