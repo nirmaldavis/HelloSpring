@@ -28,4 +28,15 @@ public class SpringSpelTest {
 		
 	}
 
+	@Test 
+	public void testAddressWithSpel() {
+		
+		System.setProperty("type", "Office");
+		
+		ApplicationContext context = SpringApplication.run(SpringSpelConfig.class);
+		String address = context.getBean("address", String.class);
+		System.out.println("address : " + address);
+		assertEquals("JFWTC, Whitefield", address);
+		
+	}	
 }
