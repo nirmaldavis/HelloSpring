@@ -39,4 +39,14 @@ public class SpringSpelTest {
 		assertEquals("JFWTC, Whitefield", address);
 		
 	}	
+	
+	@Test 
+	public void testEnvVariableWithSpel() {
+		
+		ApplicationContext context = SpringApplication.run(SpringSpelConfig.class);
+		String windir = context.getBean("windir", String.class);
+		System.out.println("windir : " + windir);
+		assertEquals("C:\\Windows", windir);
+		
+	}	
 }

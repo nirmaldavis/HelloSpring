@@ -9,6 +9,7 @@ public class SpringSpelConfig {
 
 	//Using Spring Expression Language SpEL to get property from java system command line or system property 
 	
+	//Referring system property with SpEL
 	@Value("#{systemProperties['ACCOUNT_TYPE']}")
 	String accountType;
 	
@@ -36,5 +37,14 @@ public class SpringSpelConfig {
 		}
 				
 		return address;
+	}
+	
+	//Referring environment variable with SpEL
+	@Value("#{systemEnvironment['windir']}")
+	String windowsDir;
+	
+	@Bean(name="windir")
+	String getWindowsDir() {
+		return windowsDir;
 	}
 }
