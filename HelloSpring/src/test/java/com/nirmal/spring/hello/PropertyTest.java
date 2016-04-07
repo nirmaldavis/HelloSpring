@@ -18,7 +18,7 @@ public class PropertyTest {
 		
 //		context = new AnnotationConfigApplicationContext(PropertyConfig.class);
 		
-		//We can set it on comand line system property arguments -DUSER_ID=Nirmal -Dmode=dev
+		//We can set it on command line system property arguments -DUSER_ID=Nirmal -Dmode=dev
 		//or set as system property in program before initialzing the spring context
 		System.setProperty("USER_ID", "Nirmal");
 		System.setProperty("mode", "dev");
