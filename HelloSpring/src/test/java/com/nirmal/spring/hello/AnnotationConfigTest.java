@@ -23,7 +23,7 @@ public class AnnotationConfigTest {
 	public void testGreeting() {
 		Greeting greeting = context.getBean(Greeting.class);
 		String message = greeting.getMessage();
-		assertEquals("Welcome to Spring", message);
+		assertEquals("Welcome to Spring, Nirmal Davis", message);
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class AnnotationConfigTest {
 		//the first letter of class name becomes small letter when it becomes bean id
 		Greeting greeting = context.getBean("greetingImpl", Greeting.class);
 		String message = greeting.getMessage();
-		assertEquals("Welcome to Spring", message);
+		assertEquals("Welcome to Spring, Nirmal Davis", message);
 	}	
 
 }
