@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.nirmal.spring.hello.api.Greeting;
 
-@Component
+@Component("greeting")
 public class GreetingImpl implements Greeting {
 
 	private Person person;

@@ -30,7 +30,7 @@ public class AnnotationConfigTest {
 	public void testBeanIdDerivedFromClassNameGreetingImpl() {
 		//Testing Bean id derived from class name
 		//the first letter of class name becomes small letter when it becomes bean id
-		Greeting greeting = context.getBean("greetingImpl", Greeting.class);
+		Greeting greeting = context.getBean("greeting", Greeting.class);
 		String message = greeting.getMessage();
 		assertEquals("Welcome to Spring, Nirmal Davis", message);
 	}	
