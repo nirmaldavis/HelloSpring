@@ -1,5 +1,6 @@
 package com.nirmal.spring.hello.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,5 +47,16 @@ public class SpringSpelConfig {
 	@Bean(name="windir")
 	String getWindowsDir() {
 		return windowsDir;
+	}
+	
+	/**
+	 * Setting a default value for system property locale with "elvis" operator in SpEL way
+	 */
+	@Value("#{systemProperties['locale'] ?: 'en-US' }")
+	String locale;
+	
+	@Bean(name="locale")
+	String getLocale() {
+		return locale;
 	}
 }

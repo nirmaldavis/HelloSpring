@@ -49,4 +49,12 @@ public class SpringSpelTest {
 		assertEquals("C:\\Windows", windir);
 		
 	}	
+	
+	@Test
+	public void testDefaultValueWithSpel()
+	{
+		ApplicationContext context = SpringApplication.run(SpringSpelConfig.class);
+		String locale = context.getBean("locale", String.class);
+		assertEquals("en-US", locale);
+	}
 }
