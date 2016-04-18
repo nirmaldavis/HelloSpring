@@ -67,5 +67,5 @@ class User {
 @Configuration
 @ComponentScan("com.nirmal.spring.hellotest")
 class ConstructConfig {
-	//or @Bean(intitMethod="initMore", destroyMethod="clearCache")	
+	//or @Bean(intitMethod="initMore", destroyMethod="clearCache") for classes you did'nt write or can't annotate	
 }
