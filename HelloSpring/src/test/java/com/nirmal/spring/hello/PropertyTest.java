@@ -49,4 +49,23 @@ public class PropertyTest {
 		assertEquals("Nirmal Davis V", user);
 		
 	}
+	
+	@Test
+	public void testPropertyDefaultValue() {
+		//Testing the default value of property when using  @Value 
+		String message = context.getBean("message", String.class);
+		System.out.println("message : " + message);
+		assertEquals("Welcome", message);
+		
+		//Testing the overriding the default value of property when using  @Value
+		
+		System.setProperty("msg", "Good morning");
+		context = SpringApplication.run(PropertyConfig.class);
+		
+		String message2 = context.getBean("message", String.class);
+		System.out.println("message2 : " + message2);
+		
+		assertEquals("Good morning", message2);
+		
+	}
 }

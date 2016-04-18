@@ -32,6 +32,11 @@ public class PropertyConfig {
 		return user;
 	}
 	
+	@Bean(name="message")
+	String getMessage(@Value("${msg:Welcome}") String msgStr) {
+		return msgStr;
+	}
+	
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
