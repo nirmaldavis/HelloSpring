@@ -1,5 +1,7 @@
 package com.nirmal.spring.db;
 
+import java.util.List;
+
 import org.hsqldb.util.DatabaseManagerSwing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -39,18 +41,45 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testCRUDofEmployee()
     {
-        DatabaseManagerSwing.main(new String[]{"--url", "jdbc:hsqldb:mem:testdb", "--user", "sa", "--password", "", "--noexit"});
+        DatabaseManagerSwing.main(new String[]{"--url", "jdbc:hsqldb:mem:employee-db", "--user", "sa", "--password", "", "--noexit"});
         
         ConfigurableApplicationContext context = SpringApplication.run(DbConfig.class);
-        Employee employee = new Employee(3, "Harsh", "Scrum Master");
+        
         EmployeeDAO dao = context.getBean(EmployeeDAO.class);
+        
+        List<Employee> empListOrig = dao.getAll();
+        
+        //Create
+        Employee employee = new Employee(3, "Harsh", "Scrum Master");
+        
         dao.save(employee);
         
+        //Get
         Employee employeeById = dao.getById(3);
         System.out.println("employeeById : " + employeeById);
         
         assertEquals("Harsh", employeeById.getName());
+        
+        //Update
+        employee.setRole("Product Owner");
+        dao.update(employee);
+        
+        employeeById = dao.getById(3);
+        System.out.println("employeeById : " + employeeById);
+        
+        assertEquals("Product Owner", employeeById.getRole());
+        
+        //Delete
+        dao.deleteById(3);
+        
+        employeeById = dao.getById(3);
+        assertNull(employeeById);
+        
+        //Get All
+        
+        List<Employee> empList = dao.getAll();
+        assertEquals(empListOrig.size(), empList.size());
     }
 }

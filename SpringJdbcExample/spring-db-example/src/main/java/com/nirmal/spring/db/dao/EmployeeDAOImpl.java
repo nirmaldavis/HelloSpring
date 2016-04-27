@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -95,18 +96,106 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	public void update(Employee employee) {
-		// TODO Auto-generated method stub
+		String query = "update Employee set name=?, role=? where id = ?";
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = dataSource.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setString(1, employee.getName());
+			ps.setString(2, employee.getRole());
+			ps.setInt(3, employee.getId());
+			int executeUpdateResult = ps.executeUpdate();
+			if(executeUpdateResult != 0) {
+				System.out.println("Employee updated with id="+employee.getId());
+            }
+			else {
+				System.out.println("No Employee found with id="+employee.getId());
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				ps.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
 		
+		String query = "delete from Employee where id = ?";
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = dataSource.getConnection();
+			ps = con.prepareStatement(query);
+			ps.setInt(1, id);
+			int executeUpdateResult = ps.executeUpdate();
+			if(executeUpdateResult != 0) {
+				System.out.println("Employee deleted with id="+ id);
+            }
+			else {
+				System.out.println("No Employee found with id="+ id);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				ps.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
 	}
 
 	public List<Employee> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+
+		List<Employee> empList = new ArrayList<Employee>();
+		String query = "select id, name, role from Employee";
+		Employee emp = null;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			if( (rs != null) && (rs.next()) ) {
+				emp = new Employee(rs.getInt("id"), rs.getString("name"), rs.getString("role"));
+				empList.add(emp);
+			}
+			else {
+				System.out.println("No emplyee found ");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				rs.close();
+				ps.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return empList;
 	}
 
 }
